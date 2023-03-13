@@ -19,13 +19,11 @@ class Dessert():
     def calories(self, calories):
         self._calories = calories
 
-    @property
     def is_healthy(self):
-        if self._calories == None:
+        if type(self._calories) != int:
             return None
         return self._calories < 200
 
-    @property
     def is_delicious(self):
         return True
 
@@ -46,5 +44,17 @@ print("_____")
 a = Dessert("chocolate", 123)
 print(a.name)
 print(a.calories)
-print(a.is_healthy)
-print(a.is_delicious)
+
+dessert = Dessert()
+dessert.name = "test_name"
+print(dessert.name)
+dessert.name = "test_name2"
+print(dessert.name)
+if dessert.name != "test_name2": raise Exception("Setter for name is not working")
+dessert.calories = "test_calories"
+print(dessert.calories)
+dessert.calories = "test_calories2"
+print(dessert.calories)
+if dessert.calories != "test_calories2": raise Exception("Setter for calories is not working")
+print(dessert.is_delicious())
+print(dessert.is_healthy())

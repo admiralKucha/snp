@@ -28,39 +28,34 @@ class JellyBean():
     def flavor(self, flavor):
         self._flavor = flavor
 
-    @property
     def is_healthy(self):
-        if self._calories == None:
+        if type(self._calories) != int:
             return None
         return self._calories < 200
 
-    @property
     def is_delicious(self):
         if self.flavor != "black licorice":
             return True
         return False
 
-a = JellyBean()
-print(a.name)
-print(a.calories)
-print(a.is_healthy)
-print(a.is_delicious)
-a.name = "smth"
-a.calories = 4356
-print("_____")
-print(a.name)
-print(a.calories)
-print(a.is_healthy)
-print(a.is_delicious)
-print("_____")
-a = JellyBean("chocolate", 123)
-print(a.name)
-print(a.calories)
-print(a.is_healthy)
-print(a.is_delicious)
-print("_____")
-a = JellyBean(flavor="black licorice")
-print(a.name)
-print(a.calories)
-print(a.is_healthy)
-print(a.is_delicious)
+dessert = JellyBean()
+if not issubclass(dessert.__class__, JellyBean): raise Exception("Invalid inheritance")
+dessert.name = "test_name"
+print(dessert.name)
+
+dessert.name = "test_name2"
+print(dessert.name)
+
+if dessert.name != "test_name2": raise Exception("Setter for name is not working")
+dessert.calories = "test_calories"
+print(dessert.calories)
+
+dessert.calories = "test_calories2"
+print(dessert.calories)
+
+if dessert.calories != "test_calories2": raise Exception("Setter for calories is not working")
+print(dessert.is_delicious())
+dessert.flavor = 23
+print(dessert.flavor)
+print(dessert.is_delicious())
+

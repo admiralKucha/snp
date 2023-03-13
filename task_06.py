@@ -1,8 +1,13 @@
+class WrongNumberOfPlayersError(Exception):
+    pass
+class NoSuchStrategyError(Exception):
+    pass
+
 def rps_game_winner(list):
     if len(list) != 2:
-        raise Exception("WrongNumberOfPlayersError")
+        raise WrongNumberOfPlayersError("WrongNumberOfPlayersError")
     if not {list[0][1], list[1][1]}.issubset({'R', 'P', 'S'}):
-        raise Exception("NoSuchStrategyError")
+        raise NoSuchStrategyError("NoSuchStrategyError")
 
     if list[0][1] == "R":
         if list[1][1] == "P":
