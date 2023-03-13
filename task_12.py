@@ -29,7 +29,7 @@ class JellyBean():
         self._flavor = flavor
 
     def is_healthy(self):
-        if type(self._calories) != int:
+        if type(self._calories) != int or type(self._calories) != float:
             return None
         return self._calories < 200
 
