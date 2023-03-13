@@ -20,7 +20,7 @@ class Dessert():
         self._calories = calories
 
     def is_healthy(self):
-        if type(self._calories) != int or type(self._calories) != float:
+        if type(self._calories) != int and type(self._calories) != float:
             return None
         return self._calories < 200
 
@@ -56,5 +56,9 @@ print(dessert.calories)
 dessert.calories = "test_calories2"
 print(dessert.calories)
 if dessert.calories != "test_calories2": raise Exception("Setter for calories is not working")
-print(dessert.is_delicious())
+print(dessert.is_healthy())
+
+dessert.calories = 3.0
+print(dessert.is_healthy())
+dessert.calories = 3
 print(dessert.is_healthy())
